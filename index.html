@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Notes App</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <nav id="nav">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Enter a part of title"
+      />
+      <button id="searchBtn">Search</button>
+    </nav>
+    <div id="container">
+      <div id="noteShow">
+        <div>Text Editor</div>
+        <input type="text" id="titleInput" placeholder="Enter Title" required/>
+        <textarea
+          name="text"
+          id="textEditor"
+          placeholder="Enter you text here"
+        ></textarea>
+        <div id="buttons">
+            <button id="newBtn">New</button>
+            <button id="saveBtn">Save</button>
+            <button id="deleteBtn">Delete</button>
+        </div>
+      </div>
+
+      <div id="notesArea">
+        <div>Notes</div>
+        <ul id="notesList"></ul>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
