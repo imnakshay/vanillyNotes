@@ -15,8 +15,9 @@
   --primary: #7aa2f7;
   --primary-soft: rgba(122, 162, 247, 0.15);
   --danger: #f7768e;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md: 0 6px 20px rgba(0,0,0,0.5);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
 body {
@@ -29,30 +30,44 @@ body {
 
 #nav {
   display: flex;
-  gap: 12px;
-  padding: 14px 18px;
+  gap: 10px;
+  padding: 12px 16px;
   background: var(--panel);
   border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 #nav input {
   flex: 1;
-  padding: 12px 14px;
-  font-size: 16px;
-  background: var(--panel-2);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-}
-
-#nav button {
-  padding: 12px 18px;
+  padding: 10px 12px;
   font-size: 15px;
   background: var(--panel-2);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 6px;
+  outline: none;
+}
+
+#nav input::placeholder {
+  color: var(--muted);
+}
+
+#nav input:focus {
+  border-color: var(--primary);
+}
+
+#nav button {
+  padding: 10px 16px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  border-radius: 6px;
   cursor: pointer;
+}
+
+#nav button:hover {
+  background: #202536;
 }
 
 #container {
@@ -62,40 +77,62 @@ body {
 }
 
 #noteShow {
-  width: 70%;
+  width: 65%;
   padding: 20px;
   background: var(--panel);
   display: flex;
   flex-direction: column;
   gap: 12px;
   border-right: 1px solid var(--border);
+  box-shadow: inset -1px 0 0 var(--border);
 }
 
 #noteShow > div:first-child {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--muted);
 }
 
 #titleInput {
-  padding: 12px 14px;
-  font-size: 20px;
+  padding: 10px 12px;
+  font-size: 18px;
   background: var(--panel-2);
   color: var(--text);
   border: 1px solid var(--border);
-  border-radius: 8px;
+  border-radius: 6px;
+  outline: none;
+}
+
+#titleInput:focus {
+  border-color: var(--primary);
+}
+
+#textEditor {
+  flex: 1;
+  padding: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  resize: none;
+  outline: none;
+}
+
+#textEditor:focus {
+  border-color: var(--primary);
 }
 
 #buttons {
   display: flex;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 10px;
 }
 
 #buttons button {
-  padding: 10px 18px;
-  font-size: 15px;
-  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 14px;
+  border-radius: 6px;
   border: 1px solid var(--border);
   background: var(--panel-2);
   color: var(--text);
@@ -103,10 +140,19 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+#buttons button:hover {
+  background: #202536;
+}
+
 #saveBtn {
   background: var(--primary);
   color: #0b1020;
   border-color: var(--primary);
+  box-shadow: 0 0 0 1px rgba(122, 162, 247, 0.2), var(--shadow-sm);
+}
+
+#saveBtn:hover {
+  opacity: 0.9;
 }
 
 #deleteBtn {
@@ -114,29 +160,21 @@ body {
   border-color: var(--danger);
 }
 
-#textEditor {
-  flex: 1;
-  padding: 16px;
-  font-size: 17px;
-  line-height: 1.7;
-  background: var(--panel-2);
-  color: var(--text);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  resize: none;
+#deleteBtn:hover {
+  background: rgba(247, 118, 142, 0.1);
 }
 
 #notesArea {
-  width: 30%;
+  width: 35%;
   background: var(--panel);
   padding: 16px;
   overflow-y: auto;
 }
 
 #notesArea > div {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 600;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   color: var(--muted);
 }
 
@@ -145,19 +183,106 @@ body {
 }
 
 #notesList li {
-  padding: 12px 14px;
-  margin-bottom: 10px;
-  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
   cursor: pointer;
   border: 1px solid var(--border);
   background: var(--panel-2);
   color: var(--text);
   box-shadow: var(--shadow-sm);
-  font-size: 15px;
+}
+
+#notesList li:hover {
+  background: #202536;
 }
 
 #notesList li.selected {
   background: var(--primary-soft);
   border-color: var(--primary);
-  box-shadow: var(--shadow-md);
+  color: var(--text);
+  box-shadow: 0 0 0 1px rgba(122, 162, 247, 0.25), var(--shadow-md);
+}
+
+@media (max-width: 1024px) {
+  #noteShow {
+    width: 60%;
+  }
+
+  #notesArea {
+    width: 40%;
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+  body {
+    height: auto;
+  }
+
+  #container {
+    flex-direction: column;
+  }
+
+  #noteShow {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  #notesArea {
+    width: 100%;
+    max-height: 40vh;
+    border-top: 1px solid var(--border);
+  }
+
+  #nav {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  #nav input,
+  #nav button {
+    width: 100%;
+  }
+
+  #buttons {
+    flex-wrap: wrap;
+  }
+
+  #buttons button {
+    flex: 1;
+    min-width: 120px;
+  }
+
+  #titleInput {
+    font-size: 16px;
+  }
+
+  #textEditor {
+    font-size: 14px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  #noteShow {
+    padding: 12px;
+  }
+
+  #notesArea {
+    padding: 12px;
+  }
+
+  #notesList li {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  #nav input,
+  #nav button,
+  #buttons button {
+    font-size: 14px;
+    padding: 10px 12px;
+  }
 }
